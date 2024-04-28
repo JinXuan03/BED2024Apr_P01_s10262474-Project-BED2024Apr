@@ -1,0 +1,17 @@
+{
+  "name": "bed2024apr_p01_s10262474-project-bed2024apr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "chalk": "^5.3.0",
+    "express": "^4.19.2"
+  }
+}
