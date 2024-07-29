@@ -2,10 +2,11 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { poolPromise, sql } = require('../config/dbConfig');
 
-console.log('JWT Secret:', process.env.JWT_SECRET); // Add this line to verify the secret key
-
 exports.registerUser = async (req, res) => {
     const { username, password, role } = req.body;
+
+    console.log('Received data:', { username, password, role }); // Debugging log
+
     try {
         const pool = await poolPromise;
         const result = await pool.request()
@@ -17,7 +18,10 @@ exports.registerUser = async (req, res) => {
         }
 
         const salt = await bcrypt.genSalt(10);
+        console.log('Generated salt:', salt); // Debugging log
+
         const hashedPassword = await bcrypt.hash(password, salt);
+        console.log('Hashed password:', hashedPassword); // Debugging log
 
         await pool.request()
             .input('username', sql.VarChar, username)
